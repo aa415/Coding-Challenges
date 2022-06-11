@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Program {
+  public static int[] twoNumberSum(int[] array, int targetSum) {
+    // Write your code here.
+
+    Set<Integer> hs = new HashSet<>();
+    for (int num : array)
+      {
+        int diff = targetSum - num;
+       if( hs.contains(diff)) {
+          return new int[]{num , diff};
+        }
+        else
+       {
+         hs.add(num);
+       }
+      }
+    return new int[0];
+  }
+}
