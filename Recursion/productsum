@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Program {
+  // Tip: You can use `element instanceof ArrayList` to check whether an item
+  // is an array or an integer.
+  public static int productSum(List<Object> array) {
+    // Write your code here.
+    return getProductSum(array,1);
+  }
+
+  static int getProductSum(List<Object> array,int depth)
+  {
+    int sum = 0 ;
+
+    for( Object obj : array)
+      {
+        if(obj instanceof ArrayList)
+        {
+          sum+= getProductSum((ArrayList<Object>)obj,depth+1);
+        }
+
+        else
+        {
+          sum += (int)obj;
+        }
+      }
+    return sum*depth;
+    
+  }
+}
