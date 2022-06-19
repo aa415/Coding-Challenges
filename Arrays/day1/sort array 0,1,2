@@ -1,0 +1,31 @@
+//left right ,mid.. iterate till mid<high.. elements 0, left-1 ->0 , right+1 -> 2 rest 1
+
+class Solution {
+    public void sortColors(int[] nums) {
+        
+        int left = 0;
+        int mid =0;
+        int right = nums.length -1;
+        
+        while(mid < right)
+        {
+            
+            if(nums[mid] ==0)
+            swap(nums,left++,mid++);
+                
+            if(nums[mid] ==1)
+             mid++;   
+                
+            if(nums[mid] ==2)
+            swap(nums,mid,right--);
+        }
+        
+    }
+    
+    private static void swap(int[] nums , int index1, int index2)
+    {
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
+    }
+}
