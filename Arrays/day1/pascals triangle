@@ -1,0 +1,29 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        
+        //same no. of rows , 1st nd last ->1
+        List<List<Integer>> result = new ArrayList<>();
+        
+        ArrayList<Integer> row =null;
+        ArrayList<Integer> prev =null;
+        
+        for( int i=0;i<numRows;i++)
+        {
+            row = new ArrayList<>();
+            
+            for( int j=0;j<=i;j++)
+            {
+                if(j==0 || j==i)
+                    row.add(j,1);
+                
+                else
+                row.add(j,prev.get(j-1)+prev.get(j));
+            }
+            prev=row;
+            result.add(row);
+        }
+        
+        return result;
+        
+    }
+}
