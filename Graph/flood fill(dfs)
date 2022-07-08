@@ -1,0 +1,28 @@
+https://leetcode.com/problems/flood-fill/submissions/
+
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        
+        if(color == image[sr][sc] ) return image;
+        dfs(image,sr,sc,color,image[sr][sc]);
+        
+        return image;
+    }
+    
+    static void dfs(int[][] image, int sr, int sc,int replaceColor, int actcolor)
+    {
+        
+        if(sr >=image.length || sr<0 || sc>=image[sr].length || sc<0 || image[sr][sc]!=actcolor)
+        {
+            return;
+        }
+        
+        image[sr][sc] =replaceColor;
+        
+        dfs(image,sr+1,sc,replaceColor,actcolor);
+        dfs(image,sr-1,sc,replaceColor,actcolor);
+        dfs(image,sr,sc+1,replaceColor,actcolor);
+        dfs(image,sr,sc-1,replaceColor,actcolor);
+        
+    }
+}
