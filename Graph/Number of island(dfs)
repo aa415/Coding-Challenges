@@ -1,0 +1,41 @@
+https://leetcode.com/problems/number-of-islands/submissions/
+
+class Solution {
+    public int numIslands(char[][] grid) {
+        
+        int rows = grid.length;
+        int cols = grid[0].length;
+        int count =0;
+        for( int i=0;i<rows;i++)
+        {
+            for(int j=0;j<cols;j++)
+            {
+                if(grid[i][j] =='1' )
+                {
+                    count++;
+                    dfs(grid,i,j);
+                }
+            }
+        }
+        
+        return count;
+    }
+    
+    static void dfs (char[][] grid,int rowNum ,int colNum)
+    {
+        if(rowNum >= grid.length || rowNum<0 ||
+           colNum >= grid[rowNum].length || colNum<0
+           || grid[rowNum][colNum]!='1')
+        {
+            return;
+        }
+        
+        grid[rowNum][colNum]='X';
+        
+        dfs(grid,rowNum+1,colNum);
+            dfs(grid,rowNum-1,colNum);
+            dfs(grid,rowNum,colNum+1);
+            dfs(grid,rowNum,colNum-1);
+            
+    }
+}
